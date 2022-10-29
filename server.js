@@ -8,9 +8,21 @@ import commentRoute from "./routes/commentRoute.js"
 
 const app = express()
 
-app.use(cors())
+app.use(cors({"origin": "http://localhost:3000",
+"methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
+"preflightContinue": false,
+"optionsSuccessStatus": 204
+}))
 
-header('Access-Control-Allow-Origin:http://localhost:3000')
+
+app.get('/cors', (req, res) => {
+    res.set('Access-Control-Allow-Origin', 'http://localhost:3000');
+    res.send({ "msg": "This has CORS enabled 🎈" })
+    })
+
+
+
+
 
 app.use(express.json())
 
