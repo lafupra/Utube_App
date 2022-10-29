@@ -8,7 +8,9 @@ import commentRoute from "./routes/commentRoute.js"
 
 const app = express()
 
-app.use(cors({"Access-Control-Allow-Origin": "http://localhost:3000"}))
+app.use(cors({
+    origin: 'http://localhost:3000'
+}))
 
 
 app.get('/cors', (req, res) => {
