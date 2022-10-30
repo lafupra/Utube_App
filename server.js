@@ -14,11 +14,7 @@ const app = express()
 
 dotenv.config()
 
-app.use(cors(
-    {
-        origin:"https://635df89ffe33f7000bcb2035--cozy-malabi-3b0073.netlify.app"
-    }
-));
+
 
 const PORT = process.env.PORT
 
@@ -29,6 +25,20 @@ app.get("/",(req,res) => {
     res.send("server is working")
 })
 
+
+app.use(cors(
+    {
+        origin:"https://635df89ffe33f7000bcb2035--cozy-malabi-3b0073.netlify.app"
+    }
+));
+app.use((req, res, next) => {
+
+    const origin = req.headers.origin;
+    if (origin) {
+      res.setHeader('Access-Control-Allow-Origin', origin);
+    }
+    return next();
+  })
 
 
 
