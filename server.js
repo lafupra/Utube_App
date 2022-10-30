@@ -8,23 +8,27 @@ import commentRoute from "./routes/commentRoute.js"
 
 const app = express()
 
-app.use(cors(
-    {
-        origin:"http://localhost:3000"
-    }
-));
 
 
-app.use(express.json())
+
 
 dotenv.config()
 
 const PORT = process.env.PORT
 
+
+app.use(express.json())
+
 app.get("/",(req,res) => {
     res.send("server is working")
 })
 
+
+app.use(cors(
+    {
+        origin:"http://localhost:3000"
+    }
+));
 
 app.use("/api/users",userRoute)
 app.use("/api/videos",videoRoute)
