@@ -33,11 +33,13 @@ app.use(cors(
 ));
 app.use((req, res, next) => {
 
-    const origin = req.headers.origin;
+      const origin = "https://635df89ffe33f7000bcb2035--cozy-malabi-3b0073.netlify.app"
     if (origin) {
       res.setHeader('Access-Control-Allow-Origin', origin);
+      res.send(origin)
     }
     return next();
+    
   })
 
 
