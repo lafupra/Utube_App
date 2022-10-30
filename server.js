@@ -8,7 +8,11 @@ import commentRoute from "./routes/commentRoute.js"
 
 const app = express()
 
-app.use(cors());
+app.use(cors(
+    {
+        origin:"htttp://127.0.0.1/3000"
+    }
+));
 
 
 app.use(express.json())
