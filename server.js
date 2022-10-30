@@ -26,19 +26,7 @@ app.get("/",(req,res) => {
 })
 
 
-app.use(cors(
-    {
-        origin:"https://635df89ffe33f7000bcb2035--cozy-malabi-3b0073.netlify.app"
-    }
-));
-app.use((req, res, next) => {
-
-   
-      res.setHeader('Access-Control-Allow-Origin', "https://635df89ffe33f7000bcb2035--cozy-malabi-3b0073.netlify.app")
-
-    return next();
-    
-  })
+app.use(cors());
 
 
 
