@@ -14,19 +14,23 @@ const app = express()
 
 dotenv.config()
 
+app.use(cors());
 
+app.use(express.json())
 
 const PORT = process.env.PORT
 
+connect()
 
-app.use(express.json())
+
+
 
 app.get("/",(req,res) => {
     res.send("server is working")
 })
 
 
-app.use(cors());
+
 
 
 
@@ -35,6 +39,6 @@ app.use("/api/videos",videoRoute)
 app.use("/api/comments",commentRoute)
 
 app.listen(PORT,() => {
-    connect()
+    
     console.log(`server is working on ${PORT}`)
 })
