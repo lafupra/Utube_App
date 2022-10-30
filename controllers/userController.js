@@ -7,11 +7,12 @@ import uUser from "../models/utubeUser.js"
 
 export const getAllUserData = async (req,res) => {
 
-    res.setHeader('Access-Control-Allow-Origin', "https://635df89ffe33f7000bcb2035--cozy-malabi-3b0073.netlify.app")
+  
 
     try{
         const GetUserDataResult = await uUser.find()
-        GetUserDataResult.length === 0 &&  res.send("no user available")     
+        GetUserDataResult.length === 0 &&  res.send("no user available")  
+        res.setHeader('Access-Control-Allow-Origin', "https://635df89ffe33f7000bcb2035--cozy-malabi-3b0073.netlify.app")   
         res.send(GetUserDataResult)
        
     }catch(err){
@@ -23,14 +24,15 @@ export const getAllUserData = async (req,res) => {
 
 export const getUserData = async (req,res) => {
 
-    res.setHeader('Access-Control-Allow-Origin', "https://635df89ffe33f7000bcb2035--cozy-malabi-3b0073.netlify.app")
+  
 
     
 
     try{
         const GetUserDataResult = await uUser.findById(req.params.id)
         
-        !GetUserDataResult &&  res.send("no user available")     
+        !GetUserDataResult &&  res.send("no user available")   
+        res.setHeader('Access-Control-Allow-Origin', "https://635df89ffe33f7000bcb2035--cozy-malabi-3b0073.netlify.app")  
         res.send(GetUserDataResult)
        
     }catch(err){
