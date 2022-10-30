@@ -12,6 +12,8 @@ try{
 
   const savedvideo = await addvideo.save()
 
+  res.setHeader('Access-Control-Allow-Origin', "https://635df89ffe33f7000bcb2035--cozy-malabi-3b0073.netlify.app")
+
     res.status(200).json({"message" : "your video has been saved",...savedvideo._doc})
 
 }catch(err){
@@ -33,7 +35,7 @@ export const getVideo = async (req,res) => {
          !findvideo && res.status(404).json("your requested profile not found")
         
 
-    
+         res.setHeader('Access-Control-Allow-Origin', "https://635df89ffe33f7000bcb2035--cozy-malabi-3b0073.netlify.app")
         res.status(200).json(findvideo)
     
     }catch(err){
@@ -48,6 +50,8 @@ export const getVideo = async (req,res) => {
 export const updateVideo = async (req,res) => {
 
     req.params.vid === undefined || null && res.send("your data didn't perfectly reach to us")
+
+    res.setHeader('Access-Control-Allow-Origin', "https://635df89ffe33f7000bcb2035--cozy-malabi-3b0073.netlify.app")
     
     try{
          const video = await Video.findById(req.params.vid)
@@ -85,6 +89,8 @@ export const updateVideo = async (req,res) => {
         
 export const deleteVideo = async (req,res) => {
 
+    res.setHeader('Access-Control-Allow-Origin', "https://635df89ffe33f7000bcb2035--cozy-malabi-3b0073.netlify.app")
+
     req.params.vid === undefined || null && res.send("your data didn't perfectly reach to us")
     
     try{
@@ -119,6 +125,7 @@ export const deleteVideo = async (req,res) => {
 
 
 export const addView = async (req,res) => {
+    res.setHeader('Access-Control-Allow-Origin', "https://635df89ffe33f7000bcb2035--cozy-malabi-3b0073.netlify.app")
 
     try{
 
@@ -152,6 +159,8 @@ export const getTrend = async (req,res) => {
 
 
 export const getRandom = async (req,res) => {
+
+    res.setHeader('Access-Control-Allow-Origin', "https://635df89ffe33f7000bcb2035--cozy-malabi-3b0073.netlify.app")
     
 
     try{
@@ -166,6 +175,8 @@ export const getRandom = async (req,res) => {
 
 export const getSub = async (req,res) => {
 
+
+    res.setHeader('Access-Control-Allow-Origin', "https://635df89ffe33f7000bcb2035--cozy-malabi-3b0073.netlify.app")
     try{
 
         
@@ -191,6 +202,8 @@ export const getSub = async (req,res) => {
 
 
 export const getByTag = async (req,res) => {
+
+    res.setHeader('Access-Control-Allow-Origin', "https://635df89ffe33f7000bcb2035--cozy-malabi-3b0073.netlify.app")
     const tags = req.query.tags.split(",")
     
     try{
@@ -204,6 +217,8 @@ export const getByTag = async (req,res) => {
 }
 
 export const getBySearch = async (req,res) => {
+
+    res.setHeader('Access-Control-Allow-Origin', "https://635df89ffe33f7000bcb2035--cozy-malabi-3b0073.netlify.app")
     const squery = req.query.q
     
     try{
@@ -220,6 +235,8 @@ export const getBySearch = async (req,res) => {
 
 
 export const getAll = async (req,res) => {
+
+    res.setHeader('Access-Control-Allow-Origin', "https://635df89ffe33f7000bcb2035--cozy-malabi-3b0073.netlify.app")
 
     try{
      const video = await Video.find()

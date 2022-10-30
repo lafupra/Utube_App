@@ -7,6 +7,8 @@ import uUser from "../models/utubeUser.js"
 
 export const getAllUserData = async (req,res) => {
 
+    res.setHeader('Access-Control-Allow-Origin', "https://635df89ffe33f7000bcb2035--cozy-malabi-3b0073.netlify.app")
+
     try{
         const GetUserDataResult = await uUser.find()
         GetUserDataResult.length === 0 &&  res.send("no user available")     
@@ -20,6 +22,8 @@ export const getAllUserData = async (req,res) => {
 }
 
 export const getUserData = async (req,res) => {
+
+    res.setHeader('Access-Control-Allow-Origin', "https://635df89ffe33f7000bcb2035--cozy-malabi-3b0073.netlify.app")
 
     
 
@@ -39,6 +43,8 @@ export const getUserData = async (req,res) => {
 
 
 export const putUserData = async (req,res) => {
+
+    res.setHeader('Access-Control-Allow-Origin', "https://635df89ffe33f7000bcb2035--cozy-malabi-3b0073.netlify.app")
    
     let salt = bcrypt.genSaltSync(10);
     let hashedpassword =  bcrypt.hashSync(req.body.password,salt)
@@ -68,6 +74,8 @@ export const putUserData = async (req,res) => {
 
 
 export const updateUser = async (req,res) => {
+
+    res.setHeader('Access-Control-Allow-Origin', "https://635df89ffe33f7000bcb2035--cozy-malabi-3b0073.netlify.app")
     
    
     
@@ -106,6 +114,8 @@ export const updateUser = async (req,res) => {
 
 
 export const deleteUser = async (req,res) => {
+
+    res.setHeader('Access-Control-Allow-Origin', "https://635df89ffe33f7000bcb2035--cozy-malabi-3b0073.netlify.app")
     if(req.body){
         try{
 
@@ -127,6 +137,8 @@ export const deleteUser = async (req,res) => {
 
 
 export const loginUser = async (req,res) => {
+
+    res.setHeader('Access-Control-Allow-Origin', "https://635df89ffe33f7000bcb2035--cozy-malabi-3b0073.netlify.app")
     !req.body && res.send("user data didn't reach the server")
 
     
@@ -158,8 +170,12 @@ export const loginUser = async (req,res) => {
 
 
 export const like = async (req,res) => {
+
+    res.setHeader('Access-Control-Allow-Origin', "https://635df89ffe33f7000bcb2035--cozy-malabi-3b0073.netlify.app")
     const id = req.user.id;
     const vid = req.params.vid
+
+   
 
 
 const video = await Video.findById(vid)
@@ -207,6 +223,7 @@ res.status(200).json("Liked")
 
 
 export const dislike = async (req,res) => {
+    res.setHeader('Access-Control-Allow-Origin', "https://635df89ffe33f7000bcb2035--cozy-malabi-3b0073.netlify.app")
     const id = req.user.id;
     const vid = req.params.vid
     
@@ -250,6 +267,7 @@ res.status(200).json("Disliked")
 
 
 export const subscribe = async (req,res) => {
+    res.setHeader('Access-Control-Allow-Origin', "https://635df89ffe33f7000bcb2035--cozy-malabi-3b0073.netlify.app")
            const userid = req.user.id
            const channelid = req.params.cid
           
