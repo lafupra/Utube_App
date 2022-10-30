@@ -16,7 +16,7 @@ dotenv.config()
 
 app.use(cors(
     {
-        origin:"https://635df5c86d441569e15ae170--cozy-malabi-3b0073.netlify.app"
+        origin:"https://635df89ffe33f7000bcb2035--cozy-malabi-3b0073.netlify.app/"
     }
 ));
 
