@@ -12,7 +12,7 @@ export const getAllUserData = async (req,res) => {
     try{
         const GetUserDataResult = await uUser.find()
         GetUserDataResult.length === 0 &&  res.send("no user available")  
-        res.setHeader('Access-Control-Allow-Origin', "https://635df89ffe33f7000bcb2035--cozy-malabi-3b0073.netlify.app")   
+         
         res.send(GetUserDataResult)
        
     }catch(err){
@@ -31,8 +31,8 @@ export const getUserData = async (req,res) => {
     try{
         const GetUserDataResult = await uUser.findById(req.params.id)
         
-        !GetUserDataResult &&  res.send("no user available")   
-        res.setHeader('Access-Control-Allow-Origin', "https://635df89ffe33f7000bcb2035--cozy-malabi-3b0073.netlify.app")  
+        !GetUserDataResult &&  res.status(404).json("no user available")   
+       
         res.send(GetUserDataResult)
        
     }catch(err){
@@ -46,7 +46,7 @@ export const getUserData = async (req,res) => {
 
 export const putUserData = async (req,res) => {
 
-    res.setHeader('Access-Control-Allow-Origin', "https://635df89ffe33f7000bcb2035--cozy-malabi-3b0073.netlify.app")
+  
    
     let salt = bcrypt.genSaltSync(10);
     let hashedpassword =  bcrypt.hashSync(req.body.password,salt)
@@ -58,13 +58,16 @@ export const putUserData = async (req,res) => {
 
             const savedUser = await NewUser.save()
 
+
+
+      
             res.status(200).json(savedUser)
     
             
     
         }catch(err){
-            err.keyPattern.name && res.send("username is taken")
-            err.keyPattern.email && res.send("email is taken")
+            err.keyPattern.name && res.status(403).json("username is taken")
+            err.keyPattern.email && res.status(403).json("email is taken")
            res.send(err)
         }
 
@@ -77,7 +80,7 @@ export const putUserData = async (req,res) => {
 
 export const updateUser = async (req,res) => {
 
-    res.setHeader('Access-Control-Allow-Origin', "https://635df89ffe33f7000bcb2035--cozy-malabi-3b0073.netlify.app")
+  
     
    
     
@@ -98,7 +101,8 @@ export const updateUser = async (req,res) => {
                 )
         
                 console.log(matchedUser)
-                !matchedUser && res.send(`${req.body.name}no user found`)
+          
+                !matchedUser && res.status(404).json(`${req.body.name}no user found`)
               
                res.send(matchedUser)
         
@@ -117,12 +121,13 @@ export const updateUser = async (req,res) => {
 
 export const deleteUser = async (req,res) => {
 
-    res.setHeader('Access-Control-Allow-Origin', "https://635df89ffe33f7000bcb2035--cozy-malabi-3b0073.netlify.app")
+
     if(req.body){
         try{
 
             const deletedUser = await uUser.findByIdAndDelete(req.params.id) 
             !deletedUser && res.send(  `user not found`)
+      
             res.send(` account deleted successfully`)
     
         }catch(err){
@@ -140,7 +145,7 @@ export const deleteUser = async (req,res) => {
 
 export const loginUser = async (req,res) => {
 
-    res.setHeader('Access-Control-Allow-Origin', "https://635df89ffe33f7000bcb2035--cozy-malabi-3b0073.netlify.app")
+  
     !req.body && res.send("user data didn't reach the server")
 
     
@@ -173,7 +178,7 @@ export const loginUser = async (req,res) => {
 
 export const like = async (req,res) => {
 
-    res.setHeader('Access-Control-Allow-Origin', "https://635df89ffe33f7000bcb2035--cozy-malabi-3b0073.netlify.app")
+
     const id = req.user.id;
     const vid = req.params.vid
 
@@ -225,7 +230,7 @@ res.status(200).json("Liked")
 
 
 export const dislike = async (req,res) => {
-    res.setHeader('Access-Control-Allow-Origin', "https://635df89ffe33f7000bcb2035--cozy-malabi-3b0073.netlify.app")
+    
     const id = req.user.id;
     const vid = req.params.vid
     
@@ -269,7 +274,7 @@ res.status(200).json("Disliked")
 
 
 export const subscribe = async (req,res) => {
-    res.setHeader('Access-Control-Allow-Origin', "https://635df89ffe33f7000bcb2035--cozy-malabi-3b0073.netlify.app")
+    
            const userid = req.user.id
            const channelid = req.params.cid
           

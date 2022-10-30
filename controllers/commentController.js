@@ -1,7 +1,7 @@
 import Comment from "../models/Comment.js"
 
 export const getCommentByVideo = async (req,res) => {
-    res.setHeader('Access-Control-Allow-Origin', "https://635df89ffe33f7000bcb2035--cozy-malabi-3b0073.netlify.app")
+  
     
     
     try{
@@ -21,7 +21,7 @@ export const getCommentByVideo = async (req,res) => {
 
 
 export const updateComment = async (req,res) => {
-    res.setHeader('Access-Control-Allow-Origin', "https://635df89ffe33f7000bcb2035--cozy-malabi-3b0073.netlify.app")
+
     
     try{
 
@@ -48,7 +48,7 @@ export const updateComment = async (req,res) => {
 }
 
 export const addComment = async (req,res) => {
-    res.setHeader('Access-Control-Allow-Origin', "https://635df89ffe33f7000bcb2035--cozy-malabi-3b0073.netlify.app")
+ 
 
 
     
@@ -72,7 +72,7 @@ export const addComment = async (req,res) => {
 
 
 export const deleteComment = async (req,res) => {
-    res.setHeader('Access-Control-Allow-Origin', "https://635df89ffe33f7000bcb2035--cozy-malabi-3b0073.netlify.app")
+   
     
     try{
 

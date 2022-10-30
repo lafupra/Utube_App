@@ -20,7 +20,7 @@ app.use(express.json())
 
 const PORT = process.env.PORT
 
-connect()
+
 
 
 
@@ -39,6 +39,6 @@ app.use("/api/videos",videoRoute)
 app.use("/api/comments",commentRoute)
 
 app.listen(PORT,() => {
-    
+    connect()
     console.log(`server is working on ${PORT}`)
 })
