@@ -14,6 +14,12 @@ const app = express()
 
 dotenv.config()
 
+app.use(cors(
+    {
+        origin:"https://635df5c86d441569e15ae170--cozy-malabi-3b0073.netlify.app"
+    }
+));
+
 const PORT = process.env.PORT
 
 
@@ -24,11 +30,7 @@ app.get("/",(req,res) => {
 })
 
 
-app.use(cors(
-    {
-        origin:"http://localhost:3000"
-    }
-));
+
 
 app.use("/api/users",userRoute)
 app.use("/api/videos",videoRoute)
